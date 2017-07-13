@@ -23,7 +23,7 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.tableColumns[0].headerCell.title = "FILES DI TRADUZIONE"
+        tableView.tableColumns[0].headerCell.title = NSLocalizedString("FILES", comment: "FILES DI TRADUZIONE")
     }
     
     override func viewWillAppear() {
@@ -45,7 +45,7 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
     }
     
     func userIsEditing(path: String) {
-        print("Sto modificando: \(path)")
+        print("Editing: \(path)")
         currentEditPath = path.replacingOccurrences(of: "file://", with: "")
 
     }
@@ -107,7 +107,7 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
         let field = Array(dict!)[row]
         cell.textField!.backgroundColor = .red
         cell.textField!.stringValue = "\(field.key.components(separatedBy: "/").last!) (\(field.value.count))"
-        cell.subTitle!.stringValue = currentEditPath.contains(field.key) ? "Modifica in corso..." : "\(field.key.components(separatedBy: "/").first!)"
+        cell.subTitle!.stringValue = "\(field.key.components(separatedBy: "/").first!)"
         return cell
     }
     

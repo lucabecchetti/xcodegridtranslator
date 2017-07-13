@@ -11,5 +11,6 @@ import Cocoa
 protocol ToolbarDelegate {
     
     func search()
+    func delete()
     
 }

@@ -1,0 +1,19 @@
+/* 
+  Translate.strings
+  TranslatorGridView
+
+  Created by Luca Becchetti on 13/07/17.
+  Copyright © 2017 Luca Becchetti. All rights reserved.
+*/
+
+"OK" = "Ok";
+"CANCEL" = "Cancella";
+
+"CHOOSE" = "Scegli una cartella";
+"FILES" = "FILES DI LOCALIZZAZIONE";
+"ADD" = "Aggiungi stringa";
+"SEARCH" = "Cerca";
+"ERROR_1" = "Errore nel processare il file: %@, formato file non valido";
+"QUESTION_1" = "Sei sicuro di voler continuare?";
+"DETAILS_1" = "L'operazione non può essere annullata";
+"DELETE" = "Elimina";

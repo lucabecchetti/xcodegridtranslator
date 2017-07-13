@@ -1,0 +1,19 @@
+/* 
+  Translate.strings
+  TranslatorGridView
+
+  Created by Luca Becchetti on 13/07/17.
+  Copyright © 2017 Luca Becchetti. All rights reserved.
+*/
+
+"OK" = "Ok";
+"CANCEL" = "Cancel";
+
+"CHOOSE" = "Choose Folder";
+"FILES" = "STRINGS FILES";
+"ADD" = "Add string";
+"SEARCH" = "Search";
+"ERROR_1" = "Error processinf file: %@, invalid format";
+"QUESTION_1" = "Are you sure to continue?";
+"DETAILS_1" = "This operation cannot be undone";
+"DELETE" = "Delete";

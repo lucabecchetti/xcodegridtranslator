@@ -8,19 +8,21 @@
 
 import Cocoa
 
-class AddNewController: NSViewController{
+class SearchController: NSViewController{
     
     @IBOutlet weak var nameVar: NSTextField!
     var pathToOpen:String?
-    var delegate:AddNewDelegate?
+    var delegate:SearchDelegate?
+    var initialSearchString = ""
     
     override func viewDidLoad() {
-        self.title = NSLocalizedString("ADD", comment: "Add ")
+        self.title = NSLocalizedString("SEARCH", comment: "")
+        nameVar.stringValue = initialSearchString
     }
     
-    @IBAction func save(_ sender: Any) {
+    @IBAction func search(_ sender: Any) {
         
-        delegate?.newItemDidAdded(name: nameVar.stringValue)
+        delegate?.searchString(string: nameVar.stringValue)
         self.dismiss(self)
         
     }
@@ -31,6 +33,6 @@ class AddNewController: NSViewController{
         self.dismiss(self)
         
     }
-
+    
     
 }

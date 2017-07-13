@@ -71,14 +71,22 @@
             </objects>
             <point key="canvasLocation" x="654" y="347"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Controller-->
         <scene sceneID="NJW-Xl-RbQ">
             <objects>
-                <viewController id="2Zh-Zz-ceR" sceneMemberID="viewController">
+                <viewController id="2Zh-Zz-ceR" customClass="SearchController" customModule="TranslatorGridView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="awS-a2-7aT">
                         <rect key="frame" x="0.0" y="0.0" width="441" height="222"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="291-sT-rcx">
+                                <rect key="frame" x="92" y="135" width="256" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Immetti il nome della variabile da cercare" id="a6x-PS-URT">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="000-1f-iRh">
                                 <rect key="frame" x="42" y="97" width="360" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="NOT-9w-62e">
@@ -94,27 +102,19 @@
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="close:" target="JW3-ed-46n" id="sMn-Xo-uXP"/>
+                                    <action selector="close:" target="2Zh-Zz-ceR" id="EJK-k5-YCW"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Q7-Lz-lb2">
-                                <rect key="frame" x="349" y="42" width="45" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="Salva" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jj3-ra-4ej">
+                                <rect key="frame" x="346" y="42" width="48" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Cerca" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jj3-ra-4ej">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="save:" target="JW3-ed-46n" id="1KP-LZ-aHf"/>
+                                    <action selector="search:" target="2Zh-Zz-ceR" id="A5h-Qi-9Nx"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="291-sT-rcx">
-                                <rect key="frame" x="92" y="135" width="256" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Immetti il nome della variabile da cercare" id="a6x-PS-URT">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="291-sT-rcx" firstAttribute="top" secondItem="awS-a2-7aT" secondAttribute="top" constant="70" id="1ZT-Rh-GsG"/>
@@ -128,6 +128,9 @@
                             <constraint firstItem="7Q7-Lz-lb2" firstAttribute="top" secondItem="000-1f-iRh" secondAttribute="bottom" constant="36" id="ySR-Pv-vaA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameVar" destination="000-1f-iRh" id="0L7-nb-pTh"/>
+                    </connections>
                 </viewController>
                 <customObject id="gsv-wy-Wbm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -155,12 +158,17 @@
                                         <action selector="search:" target="4zs-4B-4xU" id="90K-Uz-eD4"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="0CB952B9-FE93-4DF3-9658-E723B85ADD01" label="Elimina" paletteLabel="Elimina" tag="-1" image="trash" id="JTb-25-pex">
+                                    <connections>
+                                        <action selector="trash:" target="4zs-4B-4xU" id="MRk-Sm-exi"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="e3N-VR-EYZ"/>
                                 <toolbarItem reference="FY5-H3-GNm"/>
+                                <toolbarItem reference="JTb-25-pex"/>
                                 <toolbarItem reference="JH6-4D-ZfH"/>
-                                <toolbarItem reference="Mcx-RZ-RZX"/>
                             </defaultToolbarItems>
                             <connections>
                                 <outlet property="delegate" destination="4zs-4B-4xU" id="jY0-wV-JjK"/>
@@ -170,6 +178,7 @@
                     <connections>
                         <outlet property="searchItem" destination="JH6-4D-ZfH" id="DUR-4K-Eiq"/>
                         <outlet property="toolBar" destination="FIH-en-C9M" id="vYP-LH-Lg7"/>
+                        <outlet property="trashItem" destination="JTb-25-pex" id="taX-b5-sTO"/>
                         <segue destination="fip-Il-dP2" kind="relationship" relationship="window.shadowedContentViewController" id="eRE-dJ-54H"/>
                     </connections>
                 </windowController>
@@ -416,5 +425,6 @@
         <image name="file" width="32" height="32"/>
         <image name="logo" width="128" height="128"/>
         <image name="search" width="128" height="128"/>
+        <image name="trash" width="128" height="128"/>
     </resources>
 </document>

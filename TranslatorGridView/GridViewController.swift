@@ -1,4 +1,4 @@
-//
+///Users/frind/Desktop/TranslatorGridView/TranslatorGridView/GridViewController.swift
 //  GridViewController.swift
 //  TranslatorGridView
 //
@@ -12,6 +12,7 @@ class GridViewController: NSWindowController {
     
     @IBOutlet weak var toolBar: NSToolbar!
     @IBOutlet weak var searchItem: NSToolbarItem!
+    @IBOutlet weak var trashItem: NSToolbarItem!
     
     var delegate:ToolbarDelegate?
     
@@ -29,6 +30,12 @@ class GridViewController: NSWindowController {
     @IBAction func search(_ sender: Any) {
         
         delegate?.search()
+        
+    }
+    
+    @IBAction func trash(_ sender: Any) {
+        
+        delegate?.delete()
         
     }
     

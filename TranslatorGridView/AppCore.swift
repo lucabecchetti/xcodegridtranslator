@@ -16,7 +16,7 @@ class AppCore: NSObject {
     func openDialog(completition: (_ path:String?) -> Void){
         let dialog = NSOpenPanel();
         
-        dialog.title                   = "Choose Folder";
+        dialog.title                   = NSLocalizedString("CHOOSE", comment: "Choose Folder");
         dialog.showsResizeIndicator    = true;
         dialog.showsHiddenFiles        = false;
         dialog.canChooseDirectories    = true;
@@ -64,8 +64,31 @@ class AppCore: NSObject {
         alert.messageText = question
         alert.informativeText = text
         alert.alertStyle = NSAlertStyle.warning
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
         return alert.runModal() == NSAlertFirstButtonReturn
+    }
+    
+    func showCloseAlert(question: String, text: String, completion : (Bool)->Void) {
+        let alert = NSAlert()
+        alert.messageText = question
+        alert.informativeText = text
+        alert.alertStyle = NSAlertStyle.warning
+        alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
+        completion(alert.runModal() == NSAlertFirstButtonReturn)
+    }
+    
+    func getColoredText(text: String, search:String) -> NSMutableAttributedString {
+        let string:NSMutableAttributedString = NSMutableAttributedString(string: text)
+        let words:[String] = text.components(separatedBy:" ")
+ 
+        for word in words {
+            if (word.contains(search)) {
+                let range:NSRange = (string.string as NSString).range(of: search)
+                string.addAttribute(NSForegroundColorAttributeName, value: NSColor.red, range: range)
+            }
+        }
+        return string
     }
     
 }

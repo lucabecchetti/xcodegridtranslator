@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate,SplitViewDelegate,NSTextFieldDelegate,AddNewDelegate,ToolbarDelegate {
+class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate,SplitViewDelegate,NSTextFieldDelegate,AddNewDelegate,ToolbarDelegate,SearchDelegate {
     
     @IBOutlet weak var tableView: NSTableView!
     
@@ -20,6 +20,8 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
     var mainWindow:StartWindowController?
     var delegate:EditingDelegate?
     var gridViewController:GridViewController?
+    var searchString:String?
+    var selected:IndexSet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,10 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         if let win = NSApplication.shared().mainWindow?.windowController as? GridViewController{
             gridViewController = win
             win.searchItem.isEnabled = false
+            win.trashItem.isEnabled = false
+            win.searchItem.label = NSLocalizedString("SEARCH", comment: "").lowercased()
+            win.trashItem.label = NSLocalizedString("DELETE", comment: "").lowercased()
+            win.delegate = self
         }
         
     }
@@ -58,6 +64,8 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         self.performSegue(withIdentifier: "addNew", sender: self)
     }
     
+    //MARK: EditingProtocol
+    
     func newItemDidAdded(name: String) {
         
         //If is not empty, continue
@@ -70,8 +78,50 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         
     }
     
+    //MARK: SearchProtocol
+    
+    func searchString(string: String) {
+        
+        searchString = (string != "") ? string : nil
+        tableView.reloadData()
+        
+    }
+    
+    //MARK: ToolbarProtocol
+    
+    func search() {
+        self.performSegue(withIdentifier: "search", sender: self)
+    }
+    
+    func delete() {
+        appCore.showCloseAlert(question: NSLocalizedString("QUESTION_1", comment: ""), text: NSLocalizedString("DETAILS_1", comment: ""), completion: { (answer) in
+            if answer == true{
+                if selected != nil{
+                    if let id = selected!.first{
+                        let vari = variables[id]
+                        variables = variables.filter({$0 != vari})
+                        for(languageFolder, filePath) in pathsFile{
+                            
+                            if !removeOrUpdate(stringInPath: URL(string: "\(filePath)")!, identifierVar: vari, stringValue: "", identifierFile: "\(languageFolder)", remove: true){
+                                
+                            }
+                        }
+                        
+                    }
+                }
+                
+                self.tableView.removeRows(at: selected!, withAnimation: NSTableViewAnimationOptions.slideDown)
+                selected = nil
+                gridViewController!.trashItem.isEnabled = false
+            }
+        })
+    }
+    
+    //MARK: AddNewProtocol
+    
     func didSelectedFile(atPaths paths: [String]) {
         
+        searchString = nil
         variables.removeAll()
         currentPath = paths
         dict?.removeAll()
@@ -79,12 +129,12 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             tableView.removeTableColumn(coltoremove)
         }
         tableView.reloadData()
-  
+        
         for file in paths{
             let language = file.components(separatedBy: "/").filter({
                 return $0.contains(".lproj")
             }).first?.replacingOccurrences(of: ".lproj", with: "").lowercased()
-
+            
             let url = URL(string: "file://"+file)
             let col = NSTableColumn(identifier: language!.lowercased())
             
@@ -92,18 +142,18 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             col.headerCell.title = language!.uppercased()
             columns.append(col)
             tableView.addTableColumn(col)
-
+            
             if let dic = NSDictionary(contentsOf: url!) as? [String: String]{
                 dict![language!] = dic
                 for d in dic{
                     if let _ = variables.index(of: d.key){
-                    
+                        
                     }else{
-                    variables.append(d.key)
+                        variables.append(d.key)
                     }
                 }
             }else{
-                _ = appCore.dialogOKCancel(question: "Ok", text: "Errore nel processare il file: \(url!), formato file non valido")
+                _ = appCore.dialogOKCancel(question: NSLocalizedString("OK", comment: ""), text: String(format: NSLocalizedString("ERROR_1", comment: ""), "\(url!)") )
             }
             pathsFile[language!] = "file://\(file)"
         }
@@ -123,7 +173,12 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
     
     func numberOfRows(in tableView: NSTableView) -> Int {
         
-        return variables.count
+        if searchString == nil{
+            return variables.count
+        }else{
+            return variables.filter({$0.contains(searchString!)}).count
+        }
+        
     }
     
     
@@ -131,6 +186,14 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         return 35
     }
     
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if let myTable = notification.object as? NSTableView {
+            
+            selected = myTable.selectedRowIndexes
+            gridViewController!.trashItem.isEnabled = true
+            
+        }
+    }
     
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -141,7 +204,11 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             let cell = tableView.make(withIdentifier: "name", owner: self) as! NSTableCellView
             
             cell.textField!.font = NSFont.boldSystemFont(ofSize: 13)
-            cell.textField!.stringValue = " "+variables[row]
+            if searchString == nil{
+                cell.textField!.stringValue = " "+variables[row]
+            }else{
+                cell.textField!.attributedStringValue = appCore.getColoredText(text: variables.filter({$0.contains(searchString!)})[row].replacingOccurrences(of: searchString!, with: searchString!), search: searchString!)
+            }
             
             return cell;
             
@@ -150,9 +217,13 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             let cell = tableView.make(withIdentifier: "value", owner: self) as! EditableCell
             cell.textArea.delegate = self
             cell.textArea.tag = row
-            cell.textArea.identifierVar = variables[row]
+            var idr = variables[row]
+            if searchString != nil{
+                idr = variables.filter({$0.contains(searchString!)})[row]
+            }
+            cell.textArea.identifierVar = idr
             cell.textArea.identifierFile = tableColumn!.identifier.lowercased()
-            if let fielddata = dict![tableColumn!.identifier.lowercased()], let valor = fielddata[variables[row]]{
+            if let fielddata = dict![tableColumn!.identifier.lowercased()], let valor = fielddata[idr]{
                 cell.textArea.stringValue = valor
                 cell.textArea.backgroundColor = .clear
             }else{
@@ -182,74 +253,114 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
     
     override func controlTextDidEndEditing(_ obj: Notification) {
         if let textField:EditableTextField = obj.object as? EditableTextField{
-           
-            //reading and writing to file
-            DispatchQueue.main.async {
-            do {
-                if let path = URL(string: self.pathsFile[textField.identifierFile] as! String){
-                    
-                    let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
-                    
-                    let identifier = textField.identifierVar
-                        .replacingOccurrences(of: "[", with: "\\[")
-                        .replacingOccurrences(of: "]", with: "\\]")
-                        .replacingOccurrences(of: "(", with: "\\(")
-                        .replacingOccurrences(of: ")", with: "\\)")
-                        .replacingOccurrences(of: "{", with: "\\{")
-                        .replacingOccurrences(of: "}", with: "\\}")
-                    
-                    //Check for string
-                    let matched = appCore.matches(for: "\"\(identifier)\"[ ]*=[ ]*\"(.*)\";", in: text2)
-
-                    var newString = ""
-
-                    //String exists
-                    if matched.count > 0{
-                        let regex = try NSRegularExpression(pattern:"\"\(identifier)\"[ ]*=[ ]*\"(.*)\";", options: NSRegularExpression.Options.caseInsensitive)
-                        let range = NSMakeRange(0, (text2 as NSString).length)
-                        newString = regex.stringByReplacingMatches(in: text2, options: [], range: range, withTemplate: "\"\(textField.identifierVar)\" = \"\(textField.stringValue)\";")
-                    //String do not exists
-                    }else{
-                        newString = text2+"\n"+"\"\(textField.identifierVar)\" = \"\(textField.stringValue)\";"
-                        //Test if dictionary is present
-                        if let _ = self.dict![textField.identifierFile]{
-                            self.dict![textField.identifierFile]![textField.identifierVar] = textField.stringValue
-                        }else{
-                            var newDic = [String:String]()
-                            newDic[textField.identifierVar] = textField.stringValue
-                            self.dict![textField.identifierFile] = newDic
-                        }
-                    }
-                    
-                    //Test if there is something to write
-                    if newString != ""{
             
-                        do {
-                            try newString.write(to: path, atomically: false, encoding: String.Encoding.utf8)
-                            textField.backgroundColor = .clear
-                            self.delegate?.userDidEdit(path: path.absoluteString)
-                        }
-                        catch let e{
-                            print(e)
-                            textField.backgroundColor = .red
-                            self.delegate?.userEditDidError(path: path.absoluteString)
-                        }
-                    }else{
-                        textField.backgroundColor = .red
-                        self.delegate?.userEditDidError(path: path.absoluteString)
-                    }
-                    
+            //reading and writing to file
+            
+            
+            if let path = URL(string: self.pathsFile[textField.identifierFile] as! String){
+                
+                if removeOrUpdate(stringInPath:path, identifierVar:textField.identifierVar, stringValue: textField.stringValue, identifierFile: textField.identifierFile) {
+                    textField.backgroundColor = .clear
+                    self.delegate?.userDidEdit(path: path.absoluteString)
                 }else{
                     textField.backgroundColor = .red
+                    self.delegate?.userEditDidError(path: path.absoluteString)
                 }
-            }
-            catch let e {
-                print(e)
+                
+            }else{
                 textField.backgroundColor = .red
             }
-            }
+            
+            
+            
             
         }
+    }
+    
+    func removeOrUpdate(stringInPath path:URL, identifierVar:String, stringValue:String, identifierFile:String, remove:Bool = false) -> Bool{
+        
+        print("------------ FILE EDIT ------------")
+        print("pathFile         : \(path.absoluteString)")
+        print("varToEdit        : \(identifierVar)")
+        print("newValue         : \(stringValue)")
+        print("languageFolder   : \(identifierFile)")
+        print("remove           : \(remove)")
+        
+        do {
+            let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
+            
+            let identifier = identifierVar
+                .replacingOccurrences(of: "[", with: "\\[")
+                .replacingOccurrences(of: "]", with: "\\]")
+                .replacingOccurrences(of: "(", with: "\\(")
+                .replacingOccurrences(of: ")", with: "\\)")
+                .replacingOccurrences(of: "{", with: "\\{")
+                .replacingOccurrences(of: "}", with: "\\}")
+            
+            //Check for string
+            let matched = appCore.matches(for: "\"\(identifier)\"[ ]*=[ ]*\"(.*)\";", in: text2)
+            
+            var newString = ""
+            
+            //String exists
+            if matched.count > 0{
+                print("Regex: \"\(identifier)\"[ ]*=[ ]*\"(.*)\"; -> FOUND")
+                let regex = try NSRegularExpression(pattern:"\"\(identifier)\"[ ]*=[ ]*\"(.*)\";", options: NSRegularExpression.Options.caseInsensitive)
+                let range = NSMakeRange(0, (text2 as NSString).length)
+                newString = regex.stringByReplacingMatches(in: text2, options: [], range: range, withTemplate: (remove) ? "" : "\"\(identifierVar)\" = \"\(stringValue)\";")
+                //String do not exists
+            }else if !remove{
+                print("Regex: \"\(identifier)\"[ ]*=[ ]*\"(.*)\"; -> NOT FOUND")
+                newString = text2+"\n"+"\"\(identifierVar)\" = \"\(stringValue)\";"
+            }
+            
+            //Test if dictionary is present
+            if let _ = self.dict![identifierFile]{
+                if !remove {
+                    print("Update dictionary")
+                    self.dict![identifierFile]![identifierVar] = stringValue
+                }else{
+                    print("Remove from dictionary")
+                    self.dict![identifierFile]!.removeValue(forKey: identifierVar)
+                }
+            }else if !remove{
+                var newDic = [String:String]()
+                newDic[identifierVar] = stringValue
+                self.dict![identifierFile] = newDic
+                print("Create new item in dictionary")
+            }
+            
+            //Test if there is something to write
+            if newString != ""{
+                
+                do {
+                    try newString.write(to: path, atomically: false, encoding: String.Encoding.utf8)
+                    
+                    print("Saved to file!")
+                            print("-----------------------------------")
+                    
+                    return true
+                } catch let e{
+                    print("Error: \(e)")
+                            print("-----------------------------------")
+                    return false
+                }
+                
+            }else{
+                
+                print("Error: EmptyString")
+                        print("-----------------------------------")
+                return false
+            }
+            
+        }catch let e{
+            
+            print("Error: \(e)")
+                    print("-----------------------------------")
+            return false
+        }
+        
+        
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -259,7 +370,16 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             // initialize new view controller and cast it as your view controller
             let addNewController = segue.destinationController as? AddNewController
             addNewController?.delegate = self
+        }else if (segue.identifier == "search") {
+            
+            // initialize new view controller and cast it as your view controller
+            let addNewController = segue.destinationController as? SearchController
+            addNewController?.delegate = self
+            if searchString != nil{
+                addNewController?.initialSearchString = searchString!
+            }
         }
+        
         
         
     }
