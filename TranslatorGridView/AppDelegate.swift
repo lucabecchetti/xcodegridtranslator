@@ -15,12 +15,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+        NSApplication.shared().mainWindow?.center()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
+    
+    @IBAction func openFile(_ sender: Any) {
+        
+    }
 
-
+    @IBAction func addNew(_ sender: Any) {
+        appCore.currentEditor?.addNew()
+    }
 }
 

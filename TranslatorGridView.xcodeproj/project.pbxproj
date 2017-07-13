@@ -7,44 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A61C8DBDE386DBFC2D0240FC /* Pods_TranslatorGridView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67FD33140A42031B6B8F61F /* Pods_TranslatorGridView.framework */; };
+		B107777A1F1660810036A524 /* Grid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10777791F1660810036A524 /* Grid.storyboard */; };
+		B107777C1F1661490036A524 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B107777B1F1661490036A524 /* GridViewController.swift */; };
+		B107777E1F16652C0036A524 /* StartWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B107777D1F16652C0036A524 /* StartWindowController.swift */; };
+		B10777801F1673AE0036A524 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B107777F1F1673AE0036A524 /* ListCell.swift */; };
+		B10777821F1677BE0036A524 /* EditingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10777811F1677BE0036A524 /* EditingProtocol.swift */; };
+		B10777841F175FAC0036A524 /* ToolbarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10777831F175FAC0036A524 /* ToolbarProtocol.swift */; };
+		B113F7661F14C6BC006A0FC7 /* VerticallyAlignedTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113F7651F14C6BC006A0FC7 /* VerticallyAlignedTextFieldCell.swift */; };
+		B16FFA8F1F14E265003189DF /* EditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16FFA8E1F14E265003189DF /* EditableTextField.swift */; };
 		B1706E5C1F0F8994001F0EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1706E5B1F0F8994001F0EFB /* AppDelegate.swift */; };
 		B1706E5E1F0F8994001F0EFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1706E5D1F0F8994001F0EFB /* ViewController.swift */; };
 		B1706E601F0F8994001F0EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1706E5F1F0F8994001F0EFB /* Assets.xcassets */; };
 		B1706E631F0F8994001F0EFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1706E611F0F8994001F0EFB /* Main.storyboard */; };
-		B1706E6E1F0F8994001F0EFB /* TranslatorGridViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1706E6D1F0F8994001F0EFB /* TranslatorGridViewTests.swift */; };
-		B1706E791F0F8995001F0EFB /* TranslatorGridViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1706E781F0F8995001F0EFB /* TranslatorGridViewUITests.swift */; };
+		B181C18A1F16272D009B82EC /* AddNewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B181C1891F16272D009B82EC /* AddNewController.swift */; };
+		B181C18D1F162826009B82EC /* AddNewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B181C18C1F162826009B82EC /* AddNewProtocol.swift */; };
+		B183535F1F0FBF5E00EDFE6E /* ListContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B183535E1F0FBF5E00EDFE6E /* ListContoller.swift */; };
+		B18353611F0FC26B00EDFE6E /* SplitViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18353601F0FC26B00EDFE6E /* SplitViewProtocol.swift */; };
+		B1D881301F14B54000F931FB /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D8812F1F14B54000F931FB /* StartViewController.swift */; };
+		B1D881321F14BC0500F931FB /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D881311F14BC0500F931FB /* AppCore.swift */; };
+		B1D881361F14C24A00F931FB /* EditableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D881351F14C24A00F931FB /* EditableCell.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B1706E6A1F0F8994001F0EFB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1706E501F0F8994001F0EFB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1706E571F0F8994001F0EFB;
-			remoteInfo = TranslatorGridView;
-		};
-		B1706E751F0F8995001F0EFB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1706E501F0F8994001F0EFB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1706E571F0F8994001F0EFB;
-			remoteInfo = TranslatorGridView;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		05E2A964FEC444B5DC0E85E3 /* Pods-TranslatorGridView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TranslatorGridView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TranslatorGridView/Pods-TranslatorGridView.debug.xcconfig"; sourceTree = "<group>"; };
+		B10777791F1660810036A524 /* Grid.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Grid.storyboard; sourceTree = "<group>"; };
+		B107777B1F1661490036A524 /* GridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		B107777D1F16652C0036A524 /* StartWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWindowController.swift; sourceTree = "<group>"; };
+		B107777F1F1673AE0036A524 /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		B10777811F1677BE0036A524 /* EditingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingProtocol.swift; sourceTree = "<group>"; };
+		B10777831F175FAC0036A524 /* ToolbarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarProtocol.swift; sourceTree = "<group>"; };
+		B113F7651F14C6BC006A0FC7 /* VerticallyAlignedTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticallyAlignedTextFieldCell.swift; sourceTree = "<group>"; };
+		B16FFA8E1F14E265003189DF /* EditableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableTextField.swift; sourceTree = "<group>"; };
 		B1706E581F0F8994001F0EFB /* TranslatorGridView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TranslatorGridView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1706E5B1F0F8994001F0EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1706E5D1F0F8994001F0EFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B1706E5F1F0F8994001F0EFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1706E621F0F8994001F0EFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1706E641F0F8994001F0EFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1706E691F0F8994001F0EFB /* TranslatorGridViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TranslatorGridViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1706E6D1F0F8994001F0EFB /* TranslatorGridViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorGridViewTests.swift; sourceTree = "<group>"; };
-		B1706E6F1F0F8994001F0EFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1706E741F0F8995001F0EFB /* TranslatorGridViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TranslatorGridViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1706E781F0F8995001F0EFB /* TranslatorGridViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorGridViewUITests.swift; sourceTree = "<group>"; };
-		B1706E7A1F0F8995001F0EFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B181C1891F16272D009B82EC /* AddNewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewController.swift; sourceTree = "<group>"; };
+		B181C18C1F162826009B82EC /* AddNewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewProtocol.swift; sourceTree = "<group>"; };
+		B183535E1F0FBF5E00EDFE6E /* ListContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListContoller.swift; sourceTree = "<group>"; };
+		B18353601F0FC26B00EDFE6E /* SplitViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewProtocol.swift; sourceTree = "<group>"; };
+		B1D8812F1F14B54000F931FB /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		B1D881311F14BC0500F931FB /* AppCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
+		B1D881351F14C24A00F931FB /* EditableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableCell.swift; sourceTree = "<group>"; };
+		CF157EE2194FEF7F2AD4E329 /* Pods_TranslatorGridViewUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TranslatorGridViewUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D346353CDAF610850CAF20AA /* Pods_TranslatorGridViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TranslatorGridViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3A5DAC62EE567A5C1BA4F9E /* Pods-TranslatorGridView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TranslatorGridView.release.xcconfig"; path = "Pods/Target Support Files/Pods-TranslatorGridView/Pods-TranslatorGridView.release.xcconfig"; sourceTree = "<group>"; };
+		E67FD33140A42031B6B8F61F /* Pods_TranslatorGridView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TranslatorGridView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,33 +63,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1706E661F0F8994001F0EFB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1706E711F0F8995001F0EFB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A61C8DBDE386DBFC2D0240FC /* Pods_TranslatorGridView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A4622739217731FADDC35CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05E2A964FEC444B5DC0E85E3 /* Pods-TranslatorGridView.debug.xcconfig */,
+				E3A5DAC62EE567A5C1BA4F9E /* Pods-TranslatorGridView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B1706E4F1F0F8994001F0EFB = {
 			isa = PBXGroup;
 			children = (
 				B1706E5A1F0F8994001F0EFB /* TranslatorGridView */,
-				B1706E6C1F0F8994001F0EFB /* TranslatorGridViewTests */,
-				B1706E771F0F8995001F0EFB /* TranslatorGridViewUITests */,
 				B1706E591F0F8994001F0EFB /* Products */,
+				4A4622739217731FADDC35CB /* Pods */,
+				BB04C5344A83F60EAEE45FDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,8 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				B1706E581F0F8994001F0EFB /* TranslatorGridView.app */,
-				B1706E691F0F8994001F0EFB /* TranslatorGridViewTests.xctest */,
-				B1706E741F0F8995001F0EFB /* TranslatorGridViewUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,31 +100,62 @@
 		B1706E5A1F0F8994001F0EFB /* TranslatorGridView */ = {
 			isa = PBXGroup;
 			children = (
+				B181C18B1F162736009B82EC /* Protocols */,
+				B1D881341F14C22100F931FB /* Views */,
+				B1D881331F14BD8800F931FB /* Controllers */,
 				B1706E5B1F0F8994001F0EFB /* AppDelegate.swift */,
-				B1706E5D1F0F8994001F0EFB /* ViewController.swift */,
 				B1706E5F1F0F8994001F0EFB /* Assets.xcassets */,
 				B1706E611F0F8994001F0EFB /* Main.storyboard */,
 				B1706E641F0F8994001F0EFB /* Info.plist */,
+				B1D881311F14BC0500F931FB /* AppCore.swift */,
+				B10777791F1660810036A524 /* Grid.storyboard */,
 			);
 			path = TranslatorGridView;
 			sourceTree = "<group>";
 		};
-		B1706E6C1F0F8994001F0EFB /* TranslatorGridViewTests */ = {
+		B181C18B1F162736009B82EC /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				B1706E6D1F0F8994001F0EFB /* TranslatorGridViewTests.swift */,
-				B1706E6F1F0F8994001F0EFB /* Info.plist */,
+				B18353601F0FC26B00EDFE6E /* SplitViewProtocol.swift */,
+				B181C18C1F162826009B82EC /* AddNewProtocol.swift */,
+				B10777811F1677BE0036A524 /* EditingProtocol.swift */,
+				B10777831F175FAC0036A524 /* ToolbarProtocol.swift */,
 			);
-			path = TranslatorGridViewTests;
+			name = Protocols;
 			sourceTree = "<group>";
 		};
-		B1706E771F0F8995001F0EFB /* TranslatorGridViewUITests */ = {
+		B1D881331F14BD8800F931FB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B1706E781F0F8995001F0EFB /* TranslatorGridViewUITests.swift */,
-				B1706E7A1F0F8995001F0EFB /* Info.plist */,
+				B1706E5D1F0F8994001F0EFB /* ViewController.swift */,
+				B1D8812F1F14B54000F931FB /* StartViewController.swift */,
+				B183535E1F0FBF5E00EDFE6E /* ListContoller.swift */,
+				B181C1891F16272D009B82EC /* AddNewController.swift */,
+				B107777B1F1661490036A524 /* GridViewController.swift */,
+				B107777D1F16652C0036A524 /* StartWindowController.swift */,
 			);
-			path = TranslatorGridViewUITests;
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B1D881341F14C22100F931FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1D881351F14C24A00F931FB /* EditableCell.swift */,
+				B113F7651F14C6BC006A0FC7 /* VerticallyAlignedTextFieldCell.swift */,
+				B16FFA8E1F14E265003189DF /* EditableTextField.swift */,
+				B107777F1F1673AE0036A524 /* ListCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		BB04C5344A83F60EAEE45FDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E67FD33140A42031B6B8F61F /* Pods_TranslatorGridView.framework */,
+				D346353CDAF610850CAF20AA /* Pods_TranslatorGridViewTests.framework */,
+				CF157EE2194FEF7F2AD4E329 /* Pods_TranslatorGridViewUITests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,9 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1706E7D1F0F8995001F0EFB /* Build configuration list for PBXNativeTarget "TranslatorGridView" */;
 			buildPhases = (
+				AAC3E3DDCB4B48C8B4C7BE85 /* [CP] Check Pods Manifest.lock */,
 				B1706E541F0F8994001F0EFB /* Sources */,
 				B1706E551F0F8994001F0EFB /* Frameworks */,
 				B1706E561F0F8994001F0EFB /* Resources */,
+				C38BEC6B9A2ED24C753373D0 /* [CP] Embed Pods Frameworks */,
+				526B487EB54B9210BF7A6BD5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -141,42 +180,6 @@
 			productName = TranslatorGridView;
 			productReference = B1706E581F0F8994001F0EFB /* TranslatorGridView.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B1706E681F0F8994001F0EFB /* TranslatorGridViewTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1706E801F0F8995001F0EFB /* Build configuration list for PBXNativeTarget "TranslatorGridViewTests" */;
-			buildPhases = (
-				B1706E651F0F8994001F0EFB /* Sources */,
-				B1706E661F0F8994001F0EFB /* Frameworks */,
-				B1706E671F0F8994001F0EFB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1706E6B1F0F8994001F0EFB /* PBXTargetDependency */,
-			);
-			name = TranslatorGridViewTests;
-			productName = TranslatorGridViewTests;
-			productReference = B1706E691F0F8994001F0EFB /* TranslatorGridViewTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B1706E731F0F8995001F0EFB /* TranslatorGridViewUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1706E831F0F8995001F0EFB /* Build configuration list for PBXNativeTarget "TranslatorGridViewUITests" */;
-			buildPhases = (
-				B1706E701F0F8995001F0EFB /* Sources */,
-				B1706E711F0F8995001F0EFB /* Frameworks */,
-				B1706E721F0F8995001F0EFB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1706E761F0F8995001F0EFB /* PBXTargetDependency */,
-			);
-			name = TranslatorGridViewUITests;
-			productName = TranslatorGridViewUITests;
-			productReference = B1706E741F0F8995001F0EFB /* TranslatorGridViewUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -192,18 +195,6 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 3NJYMZCH8Y;
 						ProvisioningStyle = Automatic;
-					};
-					B1706E681F0F8994001F0EFB = {
-						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 3NJYMZCH8Y;
-						ProvisioningStyle = Automatic;
-						TestTargetID = B1706E571F0F8994001F0EFB;
-					};
-					B1706E731F0F8995001F0EFB = {
-						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 3NJYMZCH8Y;
-						ProvisioningStyle = Automatic;
-						TestTargetID = B1706E571F0F8994001F0EFB;
 					};
 				};
 			};
@@ -221,8 +212,6 @@
 			projectRoot = "";
 			targets = (
 				B1706E571F0F8994001F0EFB /* TranslatorGridView */,
-				B1706E681F0F8994001F0EFB /* TranslatorGridViewTests */,
-				B1706E731F0F8995001F0EFB /* TranslatorGridViewUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,67 +221,87 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B107777A1F1660810036A524 /* Grid.storyboard in Resources */,
 				B1706E601F0F8994001F0EFB /* Assets.xcassets in Resources */,
 				B1706E631F0F8994001F0EFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1706E671F0F8994001F0EFB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1706E721F0F8995001F0EFB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		526B487EB54B9210BF7A6BD5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TranslatorGridView/Pods-TranslatorGridView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAC3E3DDCB4B48C8B4C7BE85 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C38BEC6B9A2ED24C753373D0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TranslatorGridView/Pods-TranslatorGridView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B1706E541F0F8994001F0EFB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D881321F14BC0500F931FB /* AppCore.swift in Sources */,
 				B1706E5E1F0F8994001F0EFB /* ViewController.swift in Sources */,
+				B181C18D1F162826009B82EC /* AddNewProtocol.swift in Sources */,
+				B10777801F1673AE0036A524 /* ListCell.swift in Sources */,
+				B16FFA8F1F14E265003189DF /* EditableTextField.swift in Sources */,
+				B10777841F175FAC0036A524 /* ToolbarProtocol.swift in Sources */,
+				B107777E1F16652C0036A524 /* StartWindowController.swift in Sources */,
+				B1D881301F14B54000F931FB /* StartViewController.swift in Sources */,
+				B181C18A1F16272D009B82EC /* AddNewController.swift in Sources */,
+				B113F7661F14C6BC006A0FC7 /* VerticallyAlignedTextFieldCell.swift in Sources */,
+				B183535F1F0FBF5E00EDFE6E /* ListContoller.swift in Sources */,
+				B107777C1F1661490036A524 /* GridViewController.swift in Sources */,
 				B1706E5C1F0F8994001F0EFB /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1706E651F0F8994001F0EFB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1706E6E1F0F8994001F0EFB /* TranslatorGridViewTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1706E701F0F8995001F0EFB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1706E791F0F8995001F0EFB /* TranslatorGridViewUITests.swift in Sources */,
+				B1D881361F14C24A00F931FB /* EditableCell.swift in Sources */,
+				B10777821F1677BE0036A524 /* EditingProtocol.swift in Sources */,
+				B18353611F0FC26B00EDFE6E /* SplitViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B1706E6B1F0F8994001F0EFB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1706E571F0F8994001F0EFB /* TranslatorGridView */;
-			targetProxy = B1706E6A1F0F8994001F0EFB /* PBXContainerItemProxy */;
-		};
-		B1706E761F0F8995001F0EFB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1706E571F0F8994001F0EFB /* TranslatorGridView */;
-			targetProxy = B1706E751F0F8995001F0EFB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B1706E611F0F8994001F0EFB /* Main.storyboard */ = {
@@ -400,6 +409,7 @@
 		};
 		B1706E7E1F0F8995001F0EFB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05E2A964FEC444B5DC0E85E3 /* Pods-TranslatorGridView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -414,6 +424,7 @@
 		};
 		B1706E7F1F0F8995001F0EFB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3A5DAC62EE567A5C1BA4F9E /* Pods-TranslatorGridView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -423,68 +434,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = v.TranslatorGridView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		B1706E811F0F8995001F0EFB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3NJYMZCH8Y;
-				INFOPLIST_FILE = TranslatorGridViewTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = v.TranslatorGridViewTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TranslatorGridView.app/Contents/MacOS/TranslatorGridView";
-			};
-			name = Debug;
-		};
-		B1706E821F0F8995001F0EFB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3NJYMZCH8Y;
-				INFOPLIST_FILE = TranslatorGridViewTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = v.TranslatorGridViewTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TranslatorGridView.app/Contents/MacOS/TranslatorGridView";
-			};
-			name = Release;
-		};
-		B1706E841F0F8995001F0EFB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3NJYMZCH8Y;
-				INFOPLIST_FILE = TranslatorGridViewUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = v.TranslatorGridViewUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = TranslatorGridView;
-			};
-			name = Debug;
-		};
-		B1706E851F0F8995001F0EFB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3NJYMZCH8Y;
-				INFOPLIST_FILE = TranslatorGridViewUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = v.TranslatorGridViewUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = TranslatorGridView;
 			};
 			name = Release;
 		};
@@ -507,22 +456,7 @@
 				B1706E7F1F0F8995001F0EFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		B1706E801F0F8995001F0EFB /* Build configuration list for PBXNativeTarget "TranslatorGridViewTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1706E811F0F8995001F0EFB /* Debug */,
-				B1706E821F0F8995001F0EFB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		B1706E831F0F8995001F0EFB /* Build configuration list for PBXNativeTarget "TranslatorGridViewUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1706E841F0F8995001F0EFB /* Debug */,
-				B1706E851F0F8995001F0EFB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
