@@ -10,7 +10,10 @@ import Cocoa
 
 protocol ToolbarDelegate {
     
+    
+    /// User click search
     func search()
+    /// User click delete
     func delete()
     
 }

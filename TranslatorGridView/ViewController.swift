@@ -30,7 +30,7 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.tableColumns[0].headerCell.title = "VARIABILE"
+        tableView.tableColumns[0].headerCell.title = NSLocalizedString("VARIABILE", comment: "VARIABILE")
         tableView.tableColumns[0].width = 150
         tableView.selectionHighlightStyle = .none
         
@@ -42,7 +42,7 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             gridViewController = win
             win.searchItem.isEnabled = false
             win.trashItem.isEnabled = false
-            win.searchItem.label = NSLocalizedString("SEARCH", comment: "").lowercased()
+            win.searchItem.label = NSLocalizedString( "SEARCH",comment:"" ).lowercased()
             win.trashItem.label = NSLocalizedString("DELETE", comment: "").lowercased()
             win.delegate = self
         }
@@ -56,14 +56,18 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             mainWindow?.showWindow(self)
             mainWindow?.window?.center()
             self.view.window?.close()
+            appCore.currentEditor = nil
+            
         }
         
     }
     
     func addNew(){
-        self.performSegue(withIdentifier: "addNew", sender: self)
+        if currentPath.count > 0{
+            self.performSegue(withIdentifier: "addNew", sender: self)
+        }
     }
-    
+
     //MARK: EditingProtocol
     
     func newItemDidAdded(name: String) {

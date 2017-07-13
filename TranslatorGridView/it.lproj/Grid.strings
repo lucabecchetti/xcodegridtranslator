@@ -1,0 +1,54 @@
+
+/* Class = "NSToolbarItem"; label = "Search"; ObjectID = "JH6-4D-ZfH"; */
+"JH6-4D-ZfH.label" = "Cerca";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Search"; ObjectID = "JH6-4D-ZfH"; */
+"JH6-4D-ZfH.paletteLabel" = "Cerca";
+
+/* Class = "NSToolbarItem"; label = "Elimina"; ObjectID = "JTb-25-pex"; */
+"JTb-25-pex.label" = "Elimina";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Elimina"; ObjectID = "JTb-25-pex"; */
+"JTb-25-pex.paletteLabel" = "Elimina";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "LfL-FT-OiY"; */
+"LfL-FT-OiY.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "1"; ObjectID = "MAB-IZ-9pf"; */
+"MAB-IZ-9pf.title" = "1";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "TNT-lg-16K"; */
+"TNT-lg-16K.title" = "Label";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "TTu-7i-lir"; */
+"TTu-7i-lir.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Immetti il nome della variabile da cercare"; ObjectID = "a6x-PS-URT"; */
+"a6x-PS-URT.title" = "Immetti il nome della variabile da cercare";
+
+/* Class = "NSTextFieldCell"; title = "Immetti il nome della variabile"; ObjectID = "avS-zX-v4t"; */
+"avS-zX-v4t.title" = "Immetti il nome della variabile";
+
+/* Class = "NSToolbarItem"; label = "Translator"; ObjectID = "e3N-VR-EYZ"; */
+"e3N-VR-EYZ.label" = "Translator";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Translator"; ObjectID = "e3N-VR-EYZ"; */
+"e3N-VR-EYZ.paletteLabel" = "Translator";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "hOT-cl-zkv"; */
+"hOT-cl-zkv.title" = "Table View Cell";
+
+/* Class = "NSButtonCell"; title = "Annulla"; ObjectID = "hh0-IS-ZdQ"; */
+"hh0-IS-ZdQ.title" = "Annulla";
+
+/* Class = "NSButtonCell"; title = "Cerca"; ObjectID = "jj3-ra-4ej"; */
+"jj3-ra-4ej.title" = "Cerca";
+
+/* Class = "NSButtonCell"; title = "Annulla"; ObjectID = "m9E-i1-8Ee"; */
+"m9E-i1-8Ee.title" = "Annulla";
+
+/* Class = "NSButtonCell"; title = "Salva"; ObjectID = "nSf-EI-igG"; */
+"nSf-EI-igG.title" = "Salva";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "wJv-mq-FfH"; */
+"wJv-mq-FfH.title" = "Window";

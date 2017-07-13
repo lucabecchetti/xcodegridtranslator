@@ -9,11 +9,13 @@
 "OK" = "Ok";
 "CANCEL" = "Cancella";
 
-"CHOOSE" = "Scegli una cartella";
+"CHOOSE" = "Scegli una directory";
 "FILES" = "FILES DI LOCALIZZAZIONE";
 "ADD" = "Aggiungi stringa";
 "SEARCH" = "Cerca";
-"ERROR_1" = "Errore nel processare il file: %@, formato file non valido";
-"QUESTION_1" = "Sei sicuro di voler continuare?";
+"ERROR_1" = "Errore nel processare il fie: %@, formato non valido";
+"QUESTION_1" = "Sicuro di voler continuare?";
 "DETAILS_1" = "L'operazione non può essere annullata";
 "DELETE" = "Elimina";
+
+"VARIABILE" = "VARIABILE";

@@ -17,6 +17,7 @@
 		B10777881F1761CC0036A524 /* SearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10777871F1761CC0036A524 /* SearchDelegate.swift */; };
 		B107778B1F177CB30036A524 /* Translate.strings in Resources */ = {isa = PBXBuildFile; fileRef = B107778D1F177CB30036A524 /* Translate.strings */; };
 		B10777941F1781D60036A524 /* Grid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10777961F1781D60036A524 /* Grid.storyboard */; };
+		B10777BA1F17CE6D0036A524 /* SwiftFSWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10777B91F17CE6D0036A524 /* SwiftFSWatcher.swift */; };
 		B113F7661F14C6BC006A0FC7 /* VerticallyAlignedTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B113F7651F14C6BC006A0FC7 /* VerticallyAlignedTextFieldCell.swift */; };
 		B16FFA8F1F14E265003189DF /* EditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16FFA8E1F14E265003189DF /* EditableTextField.swift */; };
 		B1706E5C1F0F8994001F0EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1706E5B1F0F8994001F0EFB /* AppDelegate.swift */; };
@@ -42,9 +43,14 @@
 		B10777851F1761AC0036A524 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		B10777871F1761CC0036A524 /* SearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDelegate.swift; sourceTree = "<group>"; };
 		B10777901F177FC40036A524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Translate.strings; sourceTree = "<group>"; };
-		B10777911F1780400036A524 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Translate.strings; sourceTree = "<group>"; };
 		B10777A31F1782290036A524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Grid.storyboard; sourceTree = "<group>"; };
 		B10777A41F17827D0036A524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B10777A51F179E260036A524 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		B10777A61F179E260036A524 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Grid.strings; sourceTree = "<group>"; };
+		B10777A71F179E260036A524 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Translate.strings; sourceTree = "<group>"; };
+		B10777A91F179E3F0036A524 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Grid.strings; sourceTree = "<group>"; };
+		B10777AB1F179E460036A524 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		B10777B91F17CE6D0036A524 /* SwiftFSWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftFSWatcher.swift; sourceTree = "<group>"; };
 		B113F7651F14C6BC006A0FC7 /* VerticallyAlignedTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticallyAlignedTextFieldCell.swift; sourceTree = "<group>"; };
 		B16FFA8E1F14E265003189DF /* EditableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableTextField.swift; sourceTree = "<group>"; };
 		B1706E581F0F8994001F0EFB /* TranslatorGridView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TranslatorGridView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +92,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B10777AC1F17A10B0036A524 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				B10777B91F17CE6D0036A524 /* SwiftFSWatcher.swift */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
 		B1706E4F1F0F8994001F0EFB = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +122,7 @@
 		B1706E5A1F0F8994001F0EFB /* TranslatorGridView */ = {
 			isa = PBXGroup;
 			children = (
+				B10777AC1F17A10B0036A524 /* Library */,
 				B181C18B1F162736009B82EC /* Protocols */,
 				B1D881341F14C22100F931FB /* Views */,
 				B1D881331F14BD8800F931FB /* Controllers */,
@@ -312,6 +327,7 @@
 				B1D881361F14C24A00F931FB /* EditableCell.swift in Sources */,
 				B10777821F1677BE0036A524 /* EditingProtocol.swift in Sources */,
 				B18353611F0FC26B00EDFE6E /* SplitViewProtocol.swift in Sources */,
+				B10777BA1F17CE6D0036A524 /* SwiftFSWatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +338,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B10777901F177FC40036A524 /* Base */,
-				B10777911F1780400036A524 /* it */,
+				B10777A71F179E260036A524 /* it */,
 			);
 			name = Translate.strings;
 			sourceTree = "<group>";
@@ -331,6 +347,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B10777A31F1782290036A524 /* Base */,
+				B10777A61F179E260036A524 /* it */,
+				B10777A91F179E3F0036A524 /* en */,
 			);
 			name = Grid.storyboard;
 			sourceTree = "<group>";
@@ -339,6 +357,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B10777A41F17827D0036A524 /* Base */,
+				B10777A51F179E260036A524 /* it */,
+				B10777AB1F179E460036A524 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

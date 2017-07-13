@@ -16,8 +16,10 @@ class SearchController: NSViewController{
     var initialSearchString = ""
     
     override func viewDidLoad() {
+        
         self.title = NSLocalizedString("SEARCH", comment: "")
         nameVar.stringValue = initialSearchString
+        
     }
     
     @IBAction func search(_ sender: Any) {

@@ -9,5 +9,11 @@
 import Cocoa
 
 protocol SearchDelegate {
+    
+    
+    /// user is looking for a string
+    ///
+    /// - Parameter string: the string to search
     func searchString(string:String)
+
 }

@@ -16,6 +16,7 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
     var delegate:SplitViewDelegate?
     var pathToOpen:String?
     var currentEditPath:String = ""
+    let fileWatcher = SwiftFSWatcher()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,9 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableColumns[0].headerCell.title = NSLocalizedString("FILES", comment: "FILES DI TRADUZIONE")
+        //queue = SKQueue(delegate: self)
     }
-    
+
     override func viewWillAppear() {
         
         self.tableView.backgroundColor = NSColor(red:0.93, green:0.93, blue:0.93, alpha:1.00)
@@ -49,7 +51,7 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
         currentEditPath = path.replacingOccurrences(of: "file://", with: "")
 
     }
-    
+
     /**
      Costruisco array dei files per le traduzioni
     */
@@ -59,12 +61,22 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
         let fileManager = FileManager.default
         let pathString = path.replacingOccurrences(of: "file:", with: "")
         if let enumerator = fileManager.enumerator(atPath: pathString) {
+            var pathToMonitor:[String] = [String]()
+            
             for file in enumerator {
-     
-                if "\(file)".hasPrefix("Pods") || "\(file)".contains(".bundle") {
+                
+                if "\(file)".hasPrefix("Pods") || "\(file)".contains(".bundle") || "\(file)".hasPrefix("."){
                     continue
                 }
+                let path = path.appending("/\(file)")
+                
+                if path.hasSuffix(".swift"){
+                   // queue?.addPath(path)
+                    pathToMonitor.append(path)
+                }
+
                 if #available(iOS 9.0, *) {
+                    
                     if let path = NSURL(fileURLWithPath: file as! String, relativeTo: pathURL as URL).path, path.hasSuffix(".\(fileExtension)"){
                         let dirs = (path as NSString).components(separatedBy: "/")
                         let fileNameArray = (path as NSString).lastPathComponent.components(separatedBy: ".")
@@ -79,6 +91,17 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
                     print("Not available, #available iOS 9.0 & above")
                 }
             }
+            
+            // setup and listen second watcher events on files only
+            fileWatcher.watchingPaths = pathToMonitor
+            fileWatcher.watch { changeEvents in
+                for ev in changeEvents {
+                
+                    _ = appCore.findString(inPath: ev.eventPath)
+                
+                }
+            }
+            
         }
         return allFiles
     }

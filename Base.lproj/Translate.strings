@@ -17,3 +17,5 @@
 "QUESTION_1" = "Are you sure to continue?";
 "DETAILS_1" = "This operation cannot be undone";
 "DELETE" = "Delete";
+
+"VARIABILE" = "VARIABLE";
