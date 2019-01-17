@@ -22,6 +22,7 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
     var gridViewController:GridViewController?
     var searchString:String?
     var selected:IndexSet?
+    var chosenPath:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,8 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             gridViewController = win
             win.searchItem.isEnabled = false
             win.trashItem.isEnabled = false
+            win.androidIcon.isEnabled = true
+            win.exportIcon.isEnabled = true
             win.searchItem.label = NSLocalizedString( "SEARCH",comment:"" ).lowercased()
             win.trashItem.label = NSLocalizedString("DELETE", comment: "").lowercased()
             win.delegate = self
@@ -95,6 +98,26 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
     
     func search() {
         self.performSegue(withIdentifier: "search", sender: self)
+    }
+    
+    func android() {
+        
+        appCore.openDialog(canChooseFiles: true, completition: { (path) in
+            if path != nil{
+                
+                chosenPath = "\(path!)"
+                self.performSegue(withIdentifier: "loadstrings", sender: self)
+                
+                gridViewController?.androidIcon.isEnabled = true
+            }
+        })
+        
+    }
+    
+    func export() {
+        
+        self.performSegue(withIdentifier: "export", sender: "self")
+        
     }
     
     func delete() {
@@ -211,7 +234,7 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             if searchString == nil{
                 cell.textField!.stringValue = " "+variables[row]
             }else{
-                cell.textField!.attributedStringValue = appCore.getColoredText(text: variables.filter({$0.contains(searchString!)})[row].replacingOccurrences(of: searchString!, with: searchString!), search: searchString!)
+                cell.textField!.attributedStringValue = appCore.getColoredText(text: variables.filter({$0.contains(searchString!)})[row].replacingOccurrences(of: searchString!, with: searchString!), search: [searchString!])
             }
             
             return cell;
@@ -382,6 +405,12 @@ class ViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate
             if searchString != nil{
                 addNewController?.initialSearchString = searchString!
             }
+        }else if (segue.identifier == "loadstrings") {
+            
+            // initialize new view controller and cast it as your view controller
+            let loadstrings = segue.destinationController as? StringsViewController
+            loadstrings?.path = chosenPath
+            
         }
         
         

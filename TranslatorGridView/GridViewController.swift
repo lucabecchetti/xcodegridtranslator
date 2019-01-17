@@ -13,9 +13,10 @@ class GridViewController: NSWindowController {
     @IBOutlet weak var toolBar: NSToolbar!
     @IBOutlet weak var searchItem: NSToolbarItem!
     @IBOutlet weak var trashItem: NSToolbarItem!
+    @IBOutlet weak var androidIcon: NSToolbarItem!
+    @IBOutlet weak var exportIcon: NSToolbarItem!
     
     var delegate:ToolbarDelegate?
-    
     
     /**
      Load from nib
@@ -39,9 +40,22 @@ class GridViewController: NSWindowController {
         
     }
     
+    @IBAction func loadStrings(_ sender: Any) {
+        
+        delegate?.android()
+        
+    }
+    
+    @IBAction func export(_ sender: Any) {
+        
+        delegate?.export()
+        
+    }
+    
+    
     override func validateToolbarItem(_ item: NSToolbarItem) -> Bool {
         return item.isEnabled
     }
-    
+
     
 }

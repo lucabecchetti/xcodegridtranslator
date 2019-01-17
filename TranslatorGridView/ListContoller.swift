@@ -34,6 +34,7 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
         
         if pathToOpen != nil && pathToOpen! != ""{
             dict = extractAllFile(atPath: pathToOpen!, withExtension: "strings")
+            appCore.dict = dict
             tableView.reloadData()
         }
     }
@@ -144,7 +145,7 @@ class ListsController: NSViewController,NSTableViewDataSource,NSTableViewDelegat
             
             // we create an [Int] array from the index set
             let selected = myTable.selectedRowIndexes.map { Int($0) }
-            
+            print(selected)
             if let id = selected.first{
                 let field = Array(dict!)[id]
                 delegate?.didSelectedFile(atPaths: field.value)

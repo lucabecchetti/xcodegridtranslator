@@ -12,14 +12,15 @@ import Cocoa
 /// Singelton clas
 class AppCore: NSObject {
     
+    var currentPath:String = ""
     var currentEditor:ViewController?
     let defaults = UserDefaults.standard
-    
+    var dict:[String:[String]]? = [String:[String]] ()
     
     /// Open a file chooser dialog
     ///
     /// - Parameter completition: callback when user choose a file
-    func openDialog(completition: (_ path:String?) -> Void){
+    func openDialog(canChooseFiles:Bool = false, completition: (_ path:String?) -> Void){
         let dialog = NSOpenPanel();
         
         dialog.title                   = NSLocalizedString("CHOOSE", comment: "Choose Folder");
@@ -28,7 +29,7 @@ class AppCore: NSObject {
         dialog.canChooseDirectories    = true;
         dialog.canCreateDirectories    = false;
         dialog.allowsMultipleSelection = false;
-        dialog.canChooseFiles          = false;
+        dialog.canChooseFiles          = canChooseFiles;
         
         if (dialog.runModal() == NSModalResponseOK) {
             let result = dialog.url // Pathname of the file
@@ -103,14 +104,16 @@ class AppCore: NSObject {
     ///   - text: all text
     ///   - search: word to color
     /// - Returns: colorated string
-    func getColoredText(text: String, search:String) -> NSMutableAttributedString {
+    func getColoredText(text: String, search:[String]) -> NSMutableAttributedString {
         let string:NSMutableAttributedString = NSMutableAttributedString(string: text)
         let words:[String] = text.components(separatedBy:" ")
         
         for word in words {
-            if (word.contains(search)) {
-                let range:NSRange = (string.string as NSString).range(of: search)
-                string.addAttribute(NSForegroundColorAttributeName, value: NSColor.red, range: range)
+            for sc in search{
+                if (word.lowercased().contains(sc.lowercased())) {
+                    let range:NSRange = (string.string.lowercased() as NSString).range(of: sc.lowercased())
+                    string.addAttribute(NSForegroundColorAttributeName, value: NSColor.red, range: range)
+                }
             }
         }
         return string
@@ -157,6 +160,28 @@ class AppCore: NSObject {
 let appCore = AppCore()
 
 
+public struct SimilString{
+    
+    var ios_var = ""
+    var android_var = ""
+    var ios_value = ""
+    var android_value = ""
+    var distance = 0
+    
+    init(ios_var:String, ios_val:String, android_var:String, android_val:String, distance:Int = 0) {
+        
+        self.ios_var        = ios_var
+        self.ios_value      = ios_val
+        self.android_var    = android_var
+        self.android_value  = android_val
+        self.distance       = distance
+        
+    }
+    
+}
+
+
+
 //USEFULL EXTENSION
 
 extension String {
@@ -193,5 +218,22 @@ extension String {
         return results
     }
     
+    func stringByReplacingFirstOccurrenceOfString(
+        target: String, withString replaceString: String) -> String
+    {
+        if let range = self.range(of: target) {
+            return self.replacingCharacters(in: range, with: replaceString)
+        }
+        return self
+    }
+    
+    mutating func stringByRemovingRegexMatches(pattern: String, replaceWith: String = "") {
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive)
+            let range = NSMakeRange(0, self.characters.count)
+            self = regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replaceWith)
+        } catch {
+            return
+        }
+    }
 }
-

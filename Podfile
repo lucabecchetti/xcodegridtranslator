@@ -6,5 +6,6 @@ target 'TranslatorGridView' do
   use_frameworks!
 
   # Pods for TranslatorGridView
+  pod 'AEXML'
 
 end

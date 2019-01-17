@@ -15,5 +15,9 @@ protocol ToolbarDelegate {
     func search()
     /// User click delete
     func delete()
+    /// User tap android
+    func android()
+    /// User export android
+    func export()
     
 }

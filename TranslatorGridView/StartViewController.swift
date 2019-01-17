@@ -11,7 +11,11 @@ import Cocoa
 class StartViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate{
 
     @IBOutlet weak var historyTableView: NSTableView!
-    var pathToOpen:String?
+    var pathToOpen:String?{
+        didSet{
+            appCore.currentPath = pathToOpen!
+        }
+    }
     var pathHistory:[String] = [String]()
     var gridViewController:GridViewController?
     
@@ -38,7 +42,6 @@ class StartViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
         appCore.openDialog { (path) in
             if path != nil{
                 pathToOpen = path
-                
                 openGrid(path: path!)
                 
             }
